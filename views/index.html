@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script>
+  var singleApp = angular.module('singleApp', []);
+  var singleController  = function($scope, $interval, $http) {
+    $scope.result = [];
+    var starter = $interval(function() {
+      $http.get('/result').then(
+        function(res) {
+          $scope.result.push(res.data.split(','));
+        },
+        function(err) {
+          console.log(err);
+          if (angular.isDefined(starter)) {
+            $interval.cancel(starter);
+            starter = undefined;
+          }
+        });
+      }, 10000);
+    }
+    singleApp.controller('singleController', singleController);
+    </script>
+  </head>
+
+  <body ng-app="singleApp">
+    <div ng-controller="singleController">
+      <ul>
+        <li ng-repeat="r in result">
+          {{ r }}
+        </li>
+      </ul>
+    </pre>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "e2016",
+  "version": "4.0.0",
+  "description": "MAP APP",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --debug ."
+  },
+  "author": "Ramkumar Pillai <ramkumar@ap.equinix.com>",
+  "private": false,
+  "dependencies": {
+    "cjson": "~0.4.0",
+    "debug": "~2.2.0",
+    "express": "~4.13.0",
+    "path": "~0.12.7",
+    "request": "~2.72.0"
+  },
+  "devDependencies": {
+    "jshint": "~2.9.2"
+  }
+}
